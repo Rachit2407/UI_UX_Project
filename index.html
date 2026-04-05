@@ -10,9 +10,7 @@
 :root{--bg:#07080c;--s1:#0e1018;--s2:#141720;--s3:#1c2030;--b0:rgba(255,255,255,.04);--b1:rgba(255,255,255,.07);--b2:rgba(255,255,255,.12);--txt:#e4e6f0;--txt2:#8891b0;--txt3:#4a5070;--g:#34d399;--p:#818cf8;--a:#fbbf24;--r:#f87171;--tl:#22d3ee;--pk:#f472b6;--str:#f97316;--rad:12px;--rads:7px}
 
 /* ══ AUTH SCREENS ══ */
-.auth-screen {
-  display: none !important;
-}
+.auth-screen{position:fixed;inset:0;z-index:500;display:flex;overflow:hidden;background:var(--bg)}
 .auth-screen.hidden{display:none}
 .auth-left{width:420px;flex-shrink:0;background:linear-gradient(160deg,#0e1018 0%,#141720 50%,#0e1018 100%);border-right:1px solid var(--b1);display:flex;flex-direction:column;justify-content:space-between;padding:40px;position:relative;overflow:hidden}
 .auth-left::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(52,211,153,.07) 0%,transparent 60%),radial-gradient(ellipse at 80% 20%,rgba(129,140,248,.07) 0%,transparent 50%);pointer-events:none}
@@ -2657,34 +2655,5 @@ window.addEventListener('load', function(){
 <button class="mob-menu-btn" id="mobMenuBtn" onclick="openMobSidebar()" aria-label="Open menu">☰</button>
 <!-- BACK TO TOP -->
 <div class="btt" id="btt" onclick="document.getElementById('mainArea').scrollTop=0" data-tip="Back to top">↑</div>
-
-<script>
-  // force dashboard visible
-  document.querySelectorAll('.page').forEach(p => p.classList.remove('on'));
-  document.querySelector('#dashboard')?.classList.add('on');
-
-  // extra safety: hide auth
-  document.querySelector('.auth-screen')?.classList.add('hidden');
-</script>
-
-<script>
-window.addEventListener('load', function () {
-  // force dashboard visible after everything loads
-  const pages = document.querySelectorAll('.page');
-  pages.forEach(p => p.classList.remove('on'));
-
-  const dashboard = document.getElementById('page-dashboard');
-  if (dashboard) {
-    dashboard.classList.add('on');
-  } else {
-    console.error('Dashboard not found');
-  }
-
-  // hide auth just in case
-  const auth = document.querySelector('.auth-screen');
-  if (auth) auth.style.display = 'none';
-});
-</script>
-  
 </body>
 </html>
