@@ -2666,5 +2666,25 @@ window.addEventListener('load', function(){
   // extra safety: hide auth
   document.querySelector('.auth-screen')?.classList.add('hidden');
 </script>
+
+<script>
+window.addEventListener('load', function () {
+  // force dashboard visible after everything loads
+  const pages = document.querySelectorAll('.page');
+  pages.forEach(p => p.classList.remove('on'));
+
+  const dashboard = document.getElementById('page-dashboard');
+  if (dashboard) {
+    dashboard.classList.add('on');
+  } else {
+    console.error('Dashboard not found');
+  }
+
+  // hide auth just in case
+  const auth = document.querySelector('.auth-screen');
+  if (auth) auth.style.display = 'none';
+});
+</script>
+  
 </body>
 </html>
